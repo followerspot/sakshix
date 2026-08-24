@@ -298,20 +298,40 @@ All information and links are provided by the respective client/third party.
       </a>
       <div class="redirecting" id="redirect-timer">Redirecting in 05 seconds...</div>
   </div>
-</body> 
+</body>
   <script>
-  const timerElem = document.getElementById('count');
+  const timerElem = document.getElementById('redirect-timer');
+  let countdownTimer;
 
-  let seconds = 5;
+  function startRedirectCountdown() {
+    clearInterval(countdownTimer);
 
-  setInterval(function () {
-    seconds--;
+    let seconds = 5;
 
-    if (seconds <= 0) {
-      seconds = 5;
+    if (timerElem) {
+      timerElem.textContent = `Redirecting in ${seconds} seconds...`;
     }
 
-    timerElem.textContent = String(seconds).padStart(2, '0');
-  }, 1000);
+    countdownTimer = setInterval(() => {
+      seconds--;
+
+      if (seconds <= 0) {
+        clearInterval(countdownTimer);
+
+        window.location.href = "https://t.me/+zz_LuzUKEFAzOGY1";
+        return;
+      }
+
+      if (timerElem) {
+        timerElem.textContent = `Redirecting in ${seconds} seconds...`;
+      }
+    }, 1000);
+  }
+
+  // First visit + every time user comes back with Back button
+  window.addEventListener('pageshow', function () {
+    startRedirectCountdown();
+  });
 </script>
-  </html>
+
+</html>
