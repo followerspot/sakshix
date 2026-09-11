@@ -300,26 +300,6 @@ All information and links are provided by the respective client/third party.
   </div>
 </body>
 
-<script>
-  const timerElem = document.getElementById('redirect-timer');
-  let seconds = 5;
-
-  const redirectURL = "https://t.me/+zz_LuzUKEFAzOGY1";
-
-  const timer = setInterval(() => {
-    seconds--;
-
-    if (timerElem) {
-      timerElem.textContent = `Redirecting in ${seconds} seconds...`;
-    }
-
-    if (seconds <= 0) {
-      clearInterval(timer);
-      window.location.href = redirectURL;
-    }
-  }, 1000);
-</script>
-```
 
 
 
